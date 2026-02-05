@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Book Outlet</title>
+    </head>
+    <body>
+        <ul>
+            {% for book in books %}<li>{{ book.title }} (Rating: {{ book.rating }})</li>{% endfor %}
+        </ul>
+    </body>
+</html>
