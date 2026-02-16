@@ -13,4 +13,7 @@ class REgistrationFormTestCase(TestCase):
         response = self.client.get(reverse('registration:form'))
         #response = self.client.get(reverse('/registration/form/'))
         self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'Name')
+        self.assertContains(response, 'Email')
+        self.assertContains(response, 'Password')
         # Additional assertions can be added here to check the form content
