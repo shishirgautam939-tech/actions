@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="#" onsubmit="handelSubmit(event)">
+      Username: <input type="text" name="username" />
+      <br />
+      <br />
+      Password: <input type="password" name="password" />
+      <br />
+      <br />
+      <button type="submit" id="login-button">Submit</button>
+    </form>
+    <script>
+      function handelSubmit(event) {
+        event.preventDefault();
+        document.body.innerHTML +=
+          "<h1 id='welcome-message'>Form Submitted</h1>";
+        console.log(
+          `Username: ${event.target.username.value}, Password: ${event.target.password.value}`,
+        );
+      }
+    </script>
+  </body>
+</html>
