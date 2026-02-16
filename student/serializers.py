@@ -18,6 +18,11 @@ class RegistrationSerializer(serializers.Serializer):
         error_messages={'required': 'Password is required', 'blank': 'Password is required'}
     )
     
-def create(self, validated_data):
-    validated_data['password'] = make_password(validated_data['password'])
-    return Registration.objects.create(**validated_data)
+    def validate_password(self, value):
+        if len(value) < 8:
+            raise serializers.ValidationError("Password must be at least 8 characters long")
+        return value
+    
+    def create(self, validated_data):
+        validated_data['password'] = make_password(validated_data['password'])
+        return Registration.objects.create(**validated_data)

@@ -18,6 +18,9 @@ class RegistrationListAPIView(APIView):
         serializer = RegistrationSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response("Registration successful")
+            return Response({
+                'message': 'Registration successful',
+                'data': serializer.data
+            }, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
    
