@@ -1,5 +1,5 @@
 from rest_framework.views import APIView
-from rest_framework.parsers import JSONParser
+from rest_framework.parsers import JSONParser,FormParser
 from rest_framework.response import Response
 from .serializers import RegistrationSerializer
 from .models import Registration
@@ -7,7 +7,7 @@ from rest_framework import status
 
 
 class RegistrationListAPIView(APIView):
-    parser_classes = [JSONParser]
+    parser_classes = [JSONParser, FormParser]
 
     def get(self, request):
         registrations = Registration.objects.all()
